@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Trading Post — November 2026 | MAY INT Trade Intelligence</title>
+<style>
+  /* ============================================================
+     THE TRADING POST — MAY INT Trade Intelligence
+     Issue #11 | November 2026
+     Brand: #1A1C28 (navy) | #A03730 (burgundy) | #F7F7F7 (light)
+  ============================================================ */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Aptos', 'Inter', system-ui, -apple-system, Arial, sans-serif;
+    background: #DCDCDC;
+    color: #1A1C28;
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrapper { width: 100%; background: #DCDCDC; padding: 28px 16px 48px; }
+
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  }
+
+  /* ── HEADER ─────────────────────────────────────────────── */
+  .header { background: #1A1C28; padding: 36px 44px 30px; }
+  .header-masthead { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; }
+  .header-title { font-size: 30px; font-weight: 800; color: #fff; letter-spacing: -0.8px; line-height: 1; }
+  .header-title span { color: #A03730; }
+  .header-sub { font-size: 10.5px; color: #8B8FA8; letter-spacing: 2.2px; text-transform: uppercase; margin-top: 5px; }
+  .header-issue { text-align: right; color: #8B8FA8; font-size: 11.5px; line-height: 1.55; }
+  .header-issue strong { color: #fff; font-size: 13px; }
+  .header-rule { border: none; border-top: 1px solid #2E3144; margin: 0 0 16px; }
+  .header-tagline { font-size: 12px; color: #8B8FA8; letter-spacing: 0.4px; }
+  .header-tagline em { color: #A03730; font-style: normal; }
+
+  /* ── SECTION CHROME ──────────────────────────────────────── */
+  .section { padding: 32px 44px; border-bottom: 1px solid #EBEBEB; }
+  .section:last-of-type { border-bottom: none; }
+  .section-label { font-size: 9.5px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #A03730; margin-bottom: 6px; }
+  .section-title { font-size: 19px; font-weight: 700; color: #1A1C28; line-height: 1.25; margin-bottom: 10px; }
+  .section-rule { border: none; border-top: 2px solid #A03730; width: 38px; margin-bottom: 18px; }
+  .section p { margin-bottom: 14px; color: #2D2F3E; }
+  .section p:last-child { margin-bottom: 0; }
+  h3 { font-size: 13.5px; font-weight: 700; color: #1A1C28; margin: 20px 0 8px; letter-spacing: 0.2px; }
+
+  /* ── SNAPSHOT GRID ───────────────────────────────────────── */
+  .snapshot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0; }
+  .snap-card { background: #F7F7F7; border-radius: 4px; padding: 14px 16px; border-left: 3px solid #A03730; }
+  .snap-label { font-size: 9px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: #8B8FA8; margin-bottom: 4px; }
+  .snap-value { font-size: 20px; font-weight: 700; color: #1A1C28; line-height: 1; }
+  .snap-meta { font-size: 10.5px; color: #6B7280; margin-top: 4px; }
+  .snap-up { color: #B45309; }
+  .snap-dn { color: #A03730; }
+  .snap-flat { color: #4B5563; }
+  .snap-good { color: #166534; }
+
+  /* ── DATA TABLE ──────────────────────────────────────────── */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 18px 0; }
+  .data-table th { background: #1A1C28; color: #F7F7F7; font-weight: 600; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; padding: 9px 12px; text-align: left; }
+  .data-table td { padding: 8px 12px; border-bottom: 1px solid #F0F0F0; color: #2D2F3E; }
+  .data-table tr:nth-child(even) td { background: #FAFAFA; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .data-table .tag-up { color: #B45309; font-weight: 600; }
+  .data-table .tag-dn { color: #A03730; font-weight: 600; }
+  .data-table .tag-flat { color: #6B7280; font-weight: 600; }
+  .data-table .tag-good { color: #166534; font-weight: 600; }
+
+  /* ── COMMODITY CARDS ─────────────────────────────────────── */
+  .commodity-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 20px 0; }
+  .comm-card { border: 1px solid #E5E7EB; border-radius: 4px; padding: 14px 16px; position: relative; overflow: hidden; }
+  .comm-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: #A03730; }
+  .comm-name { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #8B8FA8; margin-bottom: 4px; }
+  .comm-price { font-size: 22px; font-weight: 800; color: #1A1C28; line-height: 1; }
+  .comm-unit { font-size: 11px; color: #6B7280; margin-top: 2px; }
+  .comm-change { font-size: 11px; margin-top: 6px; font-weight: 600; }
+  .comm-change.up { color: #B45309; }
+  .comm-change.dn { color: #A03730; }
+  .comm-change.good { color: #166534; }
+  .comm-change.flat { color: #4B5563; }
+
+  /* ── CSS BAR CHARTS ──────────────────────────────────────── */
+  .chart-title { font-size: 11px; font-weight: 700; color: #1A1C28; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+  .bar-row { display: flex; align-items: center; margin-bottom: 9px; gap: 10px; }
+  .bar-label { font-size: 11px; color: #4B5563; width: 84px; flex-shrink: 0; text-align: right; }
+  .bar-track { flex: 1; background: #F0F0F0; border-radius: 2px; height: 14px; position: relative; }
+  .bar-fill { height: 100%; border-radius: 2px; background: #1A1C28; position: absolute; left: 0; top: 0; }
+  .bar-fill.accent { background: #A03730; }
+  .bar-fill.good { background: #166534; }
+  .bar-val { font-size: 11px; font-weight: 700; color: #1A1C28; width: 62px; flex-shrink: 0; }
+
+  /* ── CALLOUT / HIGHLIGHT ─────────────────────────────────── */
+  .callout { background: #F7F7F7; border-left: 4px solid #A03730; border-radius: 0 4px 4px 0; padding: 14px 18px; margin: 18px 0; font-size: 13.5px; color: #2D2F3E; }
+  .callout strong { color: #A03730; }
+  .alert-box { background: #FEF3C7; border-left: 4px solid #B45309; border-radius: 0 4px 4px 0; padding: 14px 18px; margin: 18px 0; font-size: 13.5px; color: #2D2F3E; }
+  .alert-box strong { color: #B45309; }
+  .positive-box { background: #F0FDF4; border-left: 4px solid #166534; border-radius: 0 4px 4px 0; padding: 14px 18px; margin: 18px 0; font-size: 13.5px; color: #2D2F3E; }
+  .positive-box strong { color: #166534; }
+
+  /* ── RISK TAGS ───────────────────────────────────────────── */
+  .risk-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 18px 0; }
+  .risk-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; background: #F7F7F7; border-radius: 4px; }
+  .risk-badge { font-size: 9px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 3px 7px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .risk-high { background: #A03730; color: #fff; }
+  .risk-med { background: #B45309; color: #fff; }
+  .risk-low { background: #4B5563; color: #fff; }
+  .risk-text { font-size: 12px; color: #2D2F3E; line-height: 1.45; }
+  .risk-text strong { display: block; color: #1A1C28; font-weight: 700; font-size: 12.5px; }
+
+  /* ── OPPORTUNITY CARDS ───────────────────────────────────── */
+  .opp-card { border: 1px solid #E5E7EB; border-radius: 4px; padding: 18px 20px; margin: 12px 0; position: relative; }
+  .opp-label { font-size: 9px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: #A03730; margin-bottom: 6px; }
+  .opp-title { font-size: 14px; font-weight: 700; color: #1A1C28; margin-bottom: 8px; }
+  .opp-body { font-size: 13px; color: #4B5563; line-height: 1.55; }
+
+  /* ── FOOTER ──────────────────────────────────────────────── */
+  .footer { background: #1A1C28; padding: 28px 44px 24px; color: #8B8FA8; font-size: 11px; }
+  .footer-logo { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .footer-logo span { color: #A03730; }
+  .footer-sub { font-size: 11px; color: #8B8FA8; margin-bottom: 14px; }
+  .footer-contact { font-size: 12px; margin-bottom: 14px; }
+  .footer-contact a { color: #A03730; text-decoration: none; }
+  .footer-divider { border: none; border-top: 1px solid #2E3144; margin: 14px 0; }
+  .footer-disclaimer { font-size: 10px; color: #5A5E72; line-height: 1.6; }
+  .footer-disclaimer a { color: #4A4E60; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .section { padding: 24px 20px; }
+    .header { padding: 24px 20px 20px; }
+    .footer { padding: 22px 20px; }
+    .snapshot-grid { grid-template-columns: repeat(2, 1fr); }
+    .commodity-grid { grid-template-columns: 1fr; }
+    .risk-grid { grid-template-columns: 1fr; }
+    .header-masthead { flex-direction: column; gap: 12px; }
+    .header-issue { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+<div class="container">
+
+<!-- ══ HEADER ══════════════════════════════════════════════ -->
+<div class="header">
+  <div class="header-masthead">
+    <div>
+      <div class="header-title">The Trading <span>Post</span></div>
+      <div class="header-sub">MAY INT Trade Intelligence</div>
+    </div>
+    <div class="header-issue">
+      <strong>Issue #11 — November 2026</strong><br>
+      Published 16 November 2026<br>
+      MAY International Trade Services Ltd.
+    </div>
+  </div>
+  <hr class="header-rule">
+  <div class="header-tagline">Bangladesh &middot; Trade Finance &middot; Commodities &middot; Risk Intelligence &middot; <em>Monthly Edition</em></div>
+</div>
+
+<!-- ══ 1. EDITORIAL ═════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Opening Note</div>
+  <div class="section-title">From the Desk of MAY INT Intelligence</div>
+  <div class="section-rule"></div>
+
+  <p>The external accounts remain sound but are losing momentum. Exports rose 4.4% year-on-year in October to about $3.99 billion, with ready-made garments up about 4.9% to $3.17 billion, a sharp slowdown from the 13.1% total export growth recorded in August. Remittances were $2.87 billion in October, up 12.1% (August: 22.3%), taking July–October to $11.47 billion, up 13%. Bangladesh Bank's reserves at the end of October were $36.33 billion gross and $31.46 billion under BPM6, about $1 billion below August but 12% and 14% above a year earlier. The taka was quoted at 124.59 on Bangladesh Bank's November 15 rate sheet, about 1.5% weaker than the 122.74 we reported in September.</p>
+
+  <p>Inflation is flat but changing character. Headline CPI was 8.27% in October (September: 8.34%). Food inflation fell to 6.40%, a 54-month low, while non-food inflation rose to 9.89%, its highest in 41 months. The wage rate index rose 7.63%, below headline inflation.</p>
+
+  <p>The larger story is financing. Private sector credit growth fell to 4.17% in September, the lowest since the series began in 2003, even though Bangladesh Bank cut its policy rate by 50 basis points to 9.5% on July 30. The central bank says banks are placing surplus funds in government securities, and the government had borrowed about 43% of its full-year bank-borrowing target within four months. The National Board of Revenue's shortfall against target passed Tk 50,000 crore for July–October, and the World Bank's October update projects growth of just 3.4% in FY27. In MAY INT's reading these facts are linked: a revenue gap raises government borrowing from banks, and banks earning a return on government paper have less reason to lend to private firms. The Insight of the Month develops this.</p>
+
+  <p>Two items we have been tracking moved. On October 29 the UN General Assembly approved a three-year deferral of Bangladesh's LDC graduation to November 24, 2029, so the November 24, 2026 date no longer applies. A new IMF programme has still not been agreed. We also found that our August and September issues gave the policy rate as 10% when it had already been cut to 9.5%; see the corrections in Regulatory Watch.</p>
+
+  <p>MAY INT's read for November: Bangladesh's external position is a cushion, not a growth engine. Dollar inflows are healthy but decelerating, while the domestic channels that turn them into growth, bank credit, government revenue and reliable energy, are all under strain. Shipping and Strait of Hormuz developments are covered in the Maritime section.</p>
+</div>
+
+<!-- ══ 2. MARKET SNAPSHOT ════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Market Snapshot</div>
+  <div class="section-title">Key Indicators — November 2026</div>
+  <div class="section-rule"></div>
+
+  <div class="snapshot-grid">
+    <div class="snap-card">
+      <div class="snap-label">BDT / USD</div>
+      <div class="snap-value">124.59</div>
+      <div class="snap-meta snap-up">▲ Taka weaker (Sep 21: 122.74) — BB, Nov 15</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">FX Reserves (Gross)</div>
+      <div class="snap-value">$36.33B</div>
+      <div class="snap-meta snap-dn">▼ Oct-end; Aug-end was $37.35B — BB</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">CPI Inflation (Oct)</div>
+      <div class="snap-value">8.27%</div>
+      <div class="snap-meta snap-flat">▸ Sep: 8.34%; non-food 9.89%</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">Remittance (Oct)</div>
+      <div class="snap-value">$2.87B</div>
+      <div class="snap-meta snap-good">▲ +12.1% YoY (Aug: +22.3%)</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">Exports (Oct)</div>
+      <div class="snap-value">$3.99B</div>
+      <div class="snap-meta snap-good">▲ +4.4% YoY; RMG $3.17B (+4.9%)</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">Private Credit (Sep)</div>
+      <div class="snap-value">4.17%</div>
+      <div class="snap-meta snap-dn">▼ Record low since 2003 (Aug: 4.75%)</div>
+    </div>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Indicator</th>
+        <th class="num">Value</th>
+        <th class="num">Reference</th>
+        <th>Signal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Policy Rate (BB)</td>
+        <td class="num">9.50%</td>
+        <td class="num">10.00% before Aug 2</td>
+        <td class="tag-flat">HELD SEP 30</td>
+      </tr>
+      <tr>
+        <td>FX Reserves (BPM6, Oct-end)</td>
+        <td class="num">$31.46B</td>
+        <td class="num">$27.58B (Oct 2025)</td>
+        <td class="tag-good">+14% YoY</td>
+      </tr>
+      <tr>
+        <td>Remittance, Jul–Oct</td>
+        <td class="num">$11.47B</td>
+        <td class="num">Jul–Oct 2025</td>
+        <td class="tag-good">+13% YoY</td>
+      </tr>
+      <tr>
+        <td>RMG Exports, Jul–Oct</td>
+        <td class="num">$13.75B</td>
+        <td class="num">Jul–Oct 2025</td>
+        <td class="tag-good">+5.8% YoY</td>
+      </tr>
+      <tr>
+        <td>NBR Revenue Shortfall, Jul–Oct</td>
+        <td class="num">&gt; Tk 50,000 cr</td>
+        <td class="num">~Tk 42,000 cr after Q1</td>
+        <td class="tag-dn">WIDENING</td>
+      </tr>
+      <tr>
+        <td>Brent Crude</td>
+        <td class="num">$95.42/bbl</td>
+        <td class="num">$100.35 (Sep 21)</td>
+        <td class="tag-good">−12.9% over month</td>
+      </tr>
+      <tr>
+        <td>LNG (JKM)</td>
+        <td class="num">$31.35/mmbtu</td>
+        <td class="num">$27.51 (Sep 18)</td>
+        <td class="tag-up">+14%</td>
+      </tr>
+      <tr>
+        <td>WCI Global Average (Nov 12)</td>
+        <td class="num">$4,305/40ft</td>
+        <td class="num">$4,500 (Sep 17)</td>
+        <td class="tag-good">−4%</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px;color:#8B8FA8;">BDT/USD is Bangladesh Bank's weighted average rate from its Nov 15 rate sheet (the September figure was dated Sep 21); it is a reference rate, not the rate banks quote customers. Reserves are Bangladesh Bank month-end figures. Export, inflation, credit and revenue figures are as reported in the press from official releases; NBR is reported to have stopped publishing routine monthly collection data, so revenue figures are preliminary. Commodities: Trading Economics, Nov 13–16.</p>
+</div>
+
+<!-- ══ 3. ECONOMIC OUTLOOK ═══════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Economic Outlook</div>
+  <div class="section-title">Cushion Intact, Growth Engine Stalling</div>
+  <div class="section-rule"></div>
+
+  <p>The World Bank's October 6 Bangladesh Development Update projects growth of 3.4% in FY26 and FY27, rising to 3.9% in FY28, and calls for urgent financial sector, energy and revenue reforms. Press coverage describes the FY27 figure as 1.2 percentage points below the Bank's earlier projection. It is close to the 3.5% IMF figure we reported in July and well below the 6.5% growth target Bangladesh Bank cited in its July policy statement.</p>
+
+  <p>The external accounts explain why the balance of payments is not the binding constraint. Reserves of $31.46 billion (BPM6) are 14% above a year earlier, remittances are running 13% ahead for the fiscal year so far, and exports are growing. But the pace has slowed in both: remittance growth of 12.1% in October compares with 22.3% in August, and export growth of 4.4% compares with 13.1%. Reserves are also about $1 billion lower than at the end of August. We do not have a complete import picture for September–October, so we cannot say how much of the reserve decline reflects import payments and how much reflects other flows.</p>
+
+  <h3>Inflation: Cost Pressures Are Shifting</h3>
+  <p>Headline inflation has been close to 8.3% for three months, but the mix has changed. Food inflation has fallen to 6.40%, helped by lower global wheat prices (see Commodities). Non-food inflation rose to 9.89%. On a month-on-month basis consumer prices rose 1.82% in October, up from 1.12% in September. The wage rate index grew 7.63%, below headline inflation, which on this measure implies a small decline in real wages. Inflation remains above the 7.5% ceiling in the FY27 budget.</p>
+
+  <div class="alert-box">
+    <strong>Energy supply is still rationed.</strong> Press reports put national gas demand at about 4.0 bcfd against a shortfall in supply, with Petrobangla rationing among industry, power and other users. In early November the Summit floating LNG terminal was taken offline for repairs, and Petrobangla said regasified LNG to the grid would fall to 600 mmcfd from 920 mmcfd, with possible low pressure in parts of the country. Petrobangla also said the nine LNG cargoes needed for November were confirmed, but a Financial Express report says November import volume is about 10% below October's with no spot purchases planned, on the expectation that winter lowers demand. We did not find reports on factory-level gas cuts in November, so we cannot say how far the latest outage has reached industry.
+  </div>
+</div>
+
+<!-- ══ 4. TRADE FINANCE ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Trade Finance</div>
+  <div class="section-title">A Weaker Taka Moves Into LC Costs</div>
+  <div class="section-rule"></div>
+
+  <p>The most direct trade finance development this month is the exchange rate. Bangladesh Bank's weighted average rate moved from 122.74 on September 21 to 124.59 on November 15, so each dollar of import payment costs about Tk 1.85 (1.5%) more than two months ago. A one-off move of this size is modest, but importers settling usance LCs opened at the earlier rate face it as an unbudgeted cost, and exporters with dollar receipts and taka costs benefit. The Case Study works through an example.</p>
+
+  <h3>Practical Points for the Month</h3>
+
+  <p><strong>FX exposure on open LCs.</strong> Banks should check which importers hold open usance LCs without forward cover, particularly those in cotton, fuel and other dollar-priced inputs, and ask whether their pricing assumed the earlier rate. We do not know why the taka has weakened and do not forecast further moves.</p>
+
+  <p><strong>LNG payments.</strong> Asian LNG (JKM) is $31.35 per mmbtu, up 14% since mid-September and about 182% above a year ago. September cargoes were contracted at $22 to $24.62, so the November price environment is meaningfully higher than those reference points. We do not have the pricing of the nine confirmed November cargoes. Banks handling sovereign energy import payments should size exposure against current benchmarks rather than September contract prices, and MAY INT continues to recommend buffers of 20% to 25% above spot on any energy-linked LC with a tenor beyond 45 days.</p>
+
+  <p><strong>Freight.</strong> Container rates are easing, with the Drewry index at $4,305 per 40ft on November 12, but carriers have announced higher FAK and peak-season surcharges on Asia–Europe routes for the second half of November. Exporters and buyers agreeing delivered-price terms should confirm whether surcharges are for the shipper's account.</p>
+
+  <div class="callout">
+    <strong>Shipment dates still matter.</strong> Our September Case Study on LC shipment-date risk for gas-constrained exporters remains relevant while gas supply stays rationed. Amendment routes agreed early are cheaper than discrepancies discovered after a missed date.
+  </div>
+</div>
+
+<!-- ══ 5. CREDIT RISK ════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Credit &amp; Counterparty Risk</div>
+  <div class="section-title">Bank Balance Sheets Are the Weak Point</div>
+  <div class="section-rule"></div>
+
+  <p><strong>Banking sector.</strong> The World Bank update reports, citing Bangladesh Bank data as carried in the press, that the non-performing loan ratio rose to 33.2% in June 2026 from 20.2% at the end of December 2024. We have not seen the underlying table, so treat the figure as reported. It is consistent with the other evidence: private credit growth at a record low, banks buying government securities, and a lending-spread cap that Bangladesh Bank reinstated in June (4%), which the World Bank wants removed. For credit teams, the practical inference is that counterparty banks are conserving capital and liquidity. Confirming lines and facilities from Bangladeshi banks deserve closer review of capital adequacy, not only country risk.</p>
+
+  <p><strong>Sovereign.</strong> The positives are reserves 12% to 14% above a year ago, steady remittances, and the LDC deferral, which removes a near-term preference cliff. The negatives are a revenue shortfall exceeding Tk 50,000 crore after four months, growth of about 3.4%, and no IMF anchor: a new programme is under negotiation but unagreed. MAY INT's assessment remains stable, not improving.</p>
+
+  <p><strong>Corporate.</strong> Export order books are growing, but at a slower pace, and non-food cost inflation of 9.89% squeezes manufacturers' margins. Exporters themselves cited rising production costs, fuel shortages, banking difficulties and industrial unrest as risks to growth, according to press coverage of the October export data. Credit assessments should ask about each of these directly.</p>
+</div>
+
+<!-- ══ 6. MARITIME & SUPPLY CHAIN ════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Maritime &amp; Supply Chain</div>
+  <div class="section-title">Hormuz Counts Disagree; Freight Rates Drift Lower</div>
+  <div class="section-rule"></div>
+
+  <p>Reports of traffic through the Strait of Hormuz in mid-November differ widely, mostly because sources count different things. IMF PortWatch logged 3 transits on November 8 against a pre-crisis baseline of about 85 a day. Windward counted 9 tankers and cargo vessels on November 13, nearly all with AIS transponders off. A UKMTO weekly report counted 170 outbound and 155 inbound transits as of November 10; the reporting period is not clear from the coverage we saw. United Against Nuclear Iran, an advocacy group, tracks US-facilitated southern-corridor transits and reports an average of 33.8 a day, with a record 135 in the 96 hours to November 11. That series measures US-coordinated passage, not total traffic.</p>
+
+  <div class="alert-box">
+    <strong>How to read this:</strong> Counts that include escorted or dark-fleet traffic are higher than counts of visible commercial movements. MAY INT treats the PortWatch figure as the best gauge of normal commercial shipping, which remains far below baseline. Separate reports include an unverified claim by Iran's Revolutionary Guard of a mine strike on a gas carrier on November 13, and a US blockade of Iranian ports since July.
+  </div>
+
+  <h3>Container Freight</h3>
+  <p>Drewry's World Container Index fell 1% to $4,389 per 40ft on November 5 and 2% to $4,305 on November 12, with demand described as weak. Shanghai to New York fell 3% to $9,020, the lowest since August; Shanghai to Los Angeles was $7,416, Rotterdam $3,504 and Genoa $4,168. Congestion at Shanghai port rose to 49 hours from 36, and Drewry expects a further decline next week (next release: November 19).</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Indicator</th><th class="num">Value</th><th>Context</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hormuz transits, IMF PortWatch (Nov 8)</td><td class="num">3</td><td class="tag-dn">vs. ~85 baseline</td></tr>
+      <tr><td>Hormuz cargo/tanker count, Windward (Nov 13)</td><td class="num">9</td><td class="tag-flat">mostly AIS off</td></tr>
+      <tr><td>WCI global average (Nov 12)</td><td class="num">$4,305/40ft</td><td class="tag-good">−2% WoW</td></tr>
+      <tr><td>Shanghai → New York (Nov 12)</td><td class="num">$9,020/40ft</td><td class="tag-good">−3% WoW</td></tr>
+      <tr><td>Shanghai → Rotterdam (Nov 12)</td><td class="num">$3,504/40ft</td><td class="tag-flat">Genoa $4,168</td></tr>
+    </tbody>
+  </table>
+
+  <p>For Bangladesh the direct exposure is again on the import side: energy cargo timing and cost, not port function.</p>
+</div>
+
+<!-- ══ 7. COMMODITY INTELLIGENCE ══════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Commodity Intelligence</div>
+  <div class="section-title">Oil and Wheat Ease; LNG, Cotton and Rice Stay High</div>
+  <div class="section-rule"></div>
+
+  <p>Brent was $95.42 per barrel on November 16, 12.9% below a month ago but still 48.6% above a year ago; WTI was $88.42. Asian LNG moved the other way: the JKM benchmark was $31.35 per mmbtu on November 13, up 18.8% over the month. For Bangladesh, which buys LNG for power and industry, the LNG price matters more than Brent.</p>
+
+  <div class="commodity-grid">
+    <div class="comm-card">
+      <div class="comm-name">LNG (JKM)</div>
+      <div class="comm-price">$31.35</div>
+      <div class="comm-unit">USD / mmbtu (Nov 13)</div>
+      <div class="comm-change up">▲ +18.8% over the month; +182% YoY</div>
+    </div>
+    <div class="comm-card">
+      <div class="comm-name">Cotton</div>
+      <div class="comm-price">$1.81</div>
+      <div class="comm-unit">USD / kg (82.0 USc/lb)</div>
+      <div class="comm-change up">▲ +31.4% YoY; −1.8% vs Sep 21</div>
+    </div>
+    <div class="comm-card">
+      <div class="comm-name">Wheat</div>
+      <div class="comm-price">~$216</div>
+      <div class="comm-unit">USD / MT (587.5 USc/bushel)</div>
+      <div class="comm-change good">▼ −19% vs Sep 21; +7.9% YoY</div>
+    </div>
+    <div class="comm-card">
+      <div class="comm-name">Palm Oil</div>
+      <div class="comm-price">~$949</div>
+      <div class="comm-unit">USD / MT (4,462 MYR/T, approx.)</div>
+      <div class="comm-change up">▲ +8.2% YoY; −8% vs Sep 21</div>
+    </div>
+  </div>
+
+  <p>Wheat's 19% fall since September is consistent with the drop in food inflation to a 54-month low, although retail pass-through is gradual and we have not tested the link. Cotton at $1.81 per kg is 31% above last year and remains the main input-cost pressure for garment makers. The rice benchmark on Trading Economics is US rough rice futures (18.39 USD per cwt, about $405 per MT, up 76% year-on-year); it is not an Asian export price or Bangladesh's import price, so it should be read as a signal of global price direction only. Palm oil is converted at an assumed 4.7 ringgit to the dollar and is approximate.</p>
+</div>
+
+<!-- ══ 8. RISK RADAR ═══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Risk Radar</div>
+  <div class="section-title">Top Risks — November 2026</div>
+  <div class="section-rule"></div>
+
+  <div class="risk-grid">
+    <div class="risk-item">
+      <span class="risk-badge risk-high">HIGH</span>
+      <div class="risk-text">
+        <strong>Bank Balance Sheets and Credit</strong>
+        Private credit growth 4.17% (record low); reported NPL ratio 33.2% in June; banks favour government securities. Constrains SME working capital and investment.
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge risk-high">HIGH</span>
+      <div class="risk-text">
+        <strong>Fiscal Shortfall and Bank Financing</strong>
+        NBR gap above Tk 50,000 crore for Jul–Oct; VAT down about 6%; government has used about 43% of its bank-borrowing target in four months.
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge risk-med">MED</span>
+      <div class="risk-text">
+        <strong>LNG Supply and Price</strong>
+        Rationing continues; a terminal outage cut send-out to 600 mmcfd; JKM at $31.35 with November imports reported about 10% below October's.
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge risk-med">MED</span>
+      <div class="risk-text">
+        <strong>Non-Food Inflation</strong>
+        9.89% is a 41-month high and monthly price growth rose to 1.82% in October; wages are growing more slowly than prices.
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge risk-med">MED</span>
+      <div class="risk-text">
+        <strong>Taka and Reserves Drift</strong>
+        Taka about 1.5% weaker in two months and reserves about $1 billion below August. Drivers not established; inflows remain strong.
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge risk-low">LOW</span>
+      <div class="risk-text">
+        <strong>LDC and Food Prices</strong>
+        Graduation deferred to 2029 (no further extension expected, per a UN committee member quoted in the press); food inflation at a 54-month low, wheat down 19%.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 9. REGULATORY WATCH ════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Regulatory &amp; Compliance Watch</div>
+  <div class="section-title">Policy Rate Correction, LDC Decision, and an Unagreed IMF Programme</div>
+  <div class="section-rule"></div>
+
+  <div class="alert-box">
+    <strong>Corrections and clarifications to earlier issues.</strong><br>
+    <strong>1. Policy rate (August and September issues).</strong> Both issues stated the policy rate was 10%. Bangladesh Bank cut it by 50 basis points to 9.5% on July 30, effective August 2 — the first cut in six years — and held it at 9.5% in its first quarterly policy statement on September 30. The Standing Lending Facility rate is 11% and the Standing Deposit Facility rate 7.5%. The September issue's statement that the rate had been 10% since October 2024 and its table row "10.00% Unchanged" should be disregarded, and its discussion of the cost of credit should be read against a 9.5% rate. (Our July issue, published July 26, correctly reported 10% at the time.)<br>
+    <strong>2. Rice price (September issue).</strong> The rice figure we quoted is a US rough rice futures price, not a Bangladesh or Asian export price.<br>
+    <strong>3. Status of September's corrections.</strong> The LDC item is now resolved (below). On the IMF, the programme exit announced June 3 and a request for a new programme stand; no new agreement has been reached.
+  </div>
+
+  <h3>LDC Graduation Deferred to 2029</h3>
+  <p>The UN General Assembly adopted resolution A/81/L.8 on October 29 (New York time), extending Bangladesh's graduation date to November 24, 2029, with Nepal receiving the same extension. One report describes the approval as unanimous. A member of the UN Committee for Development Policy was quoted as saying there will be no further extension beyond 2029. The decision keeps current preferences for three more years; it does not change what follows them.</p>
+
+  <h3>New IMF Programme: No Agreement Yet</h3>
+  <p>The most recent report we found says Bangladesh is negotiating a replacement for its previous programme and targets a staff-level agreement by the end of 2026, with the size and instalments to be settled in negotiations and at the IMF board. We treat that target as unconfirmed. Press reports say the move to quarterly monetary policy statements followed an IMF condition.</p>
+
+  <h3>Quarterly Monetary Policy and the Spread Cap</h3>
+  <p>Bangladesh Bank issued its first quarterly statement for October–December on September 30, holding the policy rate at 9.5%. It cited inflation risks, noting non-food inflation of 9.32% at the time, and acknowledged that high borrowing costs are holding back private credit. The 4% cap on lending spreads, reinstated in June, remains in place; the World Bank has recommended removing it.</p>
+
+  <h3>Revenue Administration</h3>
+  <p>NBR reinstated monthly VAT return filing at the start of October after officials linked part of the VAT shortfall to the earlier filing change. It has also launched sector-specific collection drives and is reported to be approaching retailers to help cover the shortfall.</p>
+</div>
+
+<!-- ══ 10. BUDGET WATCH ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Budget Watch</div>
+  <div class="section-title">Four Months In, the Revenue Gap Is Widening</div>
+  <div class="section-rule"></div>
+
+  <p>In September we found no published FY27 collection data. We now have preliminary figures. For July–October the NBR's target was nearly Tk 178,000 crore and collections were below Tk 128,000 crore, a shortfall above Tk 50,000 crore. After the first quarter the shortfall was about Tk 42,000 crore, so it widened in October. Collections rose by less than 6% year-on-year; the full-year target of Tk 604,000 crore requires growth of more than 45%.</p>
+
+  <div class="snapshot-grid" style="margin:18px 0;">
+    <div class="snap-card">
+      <div class="snap-label">Income &amp; Import Tax</div>
+      <div class="snap-value">~+14%</div>
+      <div class="snap-meta snap-good">YoY growth, Jul–Oct</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">VAT</div>
+      <div class="snap-value">~−6%</div>
+      <div class="snap-meta snap-dn">Tk 29,348 cr vs Tk 49,405 cr target</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">Bank Borrowing Used</div>
+      <div class="snap-value">~43%</div>
+      <div class="snap-meta snap-up">of Tk 1.12 lakh cr target, 4 months</div>
+    </div>
+  </div>
+
+  <p>VAT is the weakest line, with a deficit of Tk 20,057 crore against its target, and officials partly attribute it to the return-filing change that has since been reversed. Even if VAT recovers, the arithmetic is difficult: growth of about 14% in income and import taxes, if sustained, does not close a gap that requires 45% overall.</p>
+
+  <div class="callout">
+    <strong>The financing link:</strong> A revenue gap has to be financed. Bangladesh Bank's report that the government had used about 43% of its Tk 1.12 lakh crore bank-borrowing target (roughly Tk 48,000 crore) within four months suggests the gap is already being met largely from the domestic banking system. That is the mechanism we flagged in September as one plausible contributor to weak private credit.
+  </div>
+
+  <p><strong>MAY INT's assessment:</strong> Our base case, a material FY27 shortfall in the range of FY26's Tk 87,527 crore or larger, is tracking. Without a mid-year revenue measure or expenditure adjustment, expect continued heavy bank borrowing and little room for private credit to recover. A caveat: the data come from press reports of preliminary NBR estimates, and a recovery in VAT would change the picture.</p>
+</div>
+
+<!-- ══ 11. OPPORTUNITY CORNER ════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Opportunity Corner</div>
+  <div class="section-title">Three Openings for Banks and Traders</div>
+  <div class="section-rule"></div>
+
+  <div class="opp-card">
+    <div class="opp-label">FX Risk Management</div>
+    <div class="opp-title">Hedging Products for Importers Facing a Weaker Taka</div>
+    <div class="opp-body">A 1.5% move in two months is a reminder that importers settling in dollars carry exchange-rate risk they may not have priced. Banks that can offer clear, affordable forward cover tied to LC settlement dates, and explain it in plain terms to mid-sized importers, can deepen relationships while reducing their own credit risk from surprise cost increases. Exporters with dollar receipts can be offered structures that net their exposure against importer clients' needs.</div>
+  </div>
+
+  <div class="opp-card">
+    <div class="opp-label">Non-Traditional Export Markets</div>
+    <div class="opp-title">Finance Growth Outside the EU and US</div>
+    <div class="opp-body">Press reports say RMG exports to non-traditional markets rose about 9% to $559.7 million in October, while shipments to the EU rose about 1.1% to $1.53 billion. The faster-growing segment is smaller, but it is where documentary practice, buyer credit checks and payment terms differ most from established EU and US business. Banks that build that expertise now will be positioned for the 2029 graduation date.</div>
+  </div>
+
+  <div class="opp-card">
+    <div class="opp-label">Working Capital for Gas-Exposed Manufacturers</div>
+    <div class="opp-title">Fund Resilience, Not Only Orders</div>
+    <div class="opp-body">With gas rationing continuing and credit scarce, manufacturers that invest in captive power, rooftop solar or dual-fuel equipment are making a case that is easier to underwrite than a general working-capital line: the equipment has a defined cost, a measurable output and a clear operational purpose. Equipment import LCs and term finance for this purpose deserve dedicated product design.</div>
+  </div>
+</div>
+
+<!-- ══ 12. DATA INTELLIGENCE ════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Data Intelligence</div>
+  <div class="section-title">Inflows Are Slowing and Inflation Is Rotating</div>
+  <div class="section-rule"></div>
+
+  <div class="chart-title">Year-on-Year Growth: August vs October 2026 (%)</div>
+  <div class="bar-row">
+    <div class="bar-label">Remit. Aug</div>
+    <div class="bar-track"><div class="bar-fill good" style="width:100%"></div></div>
+    <div class="bar-val">+22.3%</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Remit. Oct</div>
+    <div class="bar-track"><div class="bar-fill good" style="width:54%"></div></div>
+    <div class="bar-val">+12.1%</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">RMG Aug</div>
+    <div class="bar-track"><div class="bar-fill" style="width:62%"></div></div>
+    <div class="bar-val">+13.9%</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">RMG Oct</div>
+    <div class="bar-track"><div class="bar-fill" style="width:22%"></div></div>
+    <div class="bar-val">+4.9%</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Exports Aug</div>
+    <div class="bar-track"><div class="bar-fill accent" style="width:59%"></div></div>
+    <div class="bar-val">+13.1%</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Exports Oct</div>
+    <div class="bar-track"><div class="bar-fill accent" style="width:20%"></div></div>
+    <div class="bar-val">+4.4%</div>
+  </div>
+  <p style="font-size:11px;color:#8B8FA8;margin-top:12px;">Sources: Bangladesh Bank (remittances) and Export Promotion Bureau (exports), as reported by BSS, The Daily Star and TBS. We did not obtain a clean September figure.</p>
+
+  <div class="chart-title" style="margin-top:22px;">Inflation Mix: September vs October 2026 (%)</div>
+  <div class="bar-row">
+    <div class="bar-label">Food Sep</div>
+    <div class="bar-track"><div class="bar-fill" style="width:73%"></div></div>
+    <div class="bar-val">7.22%</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Food Oct</div>
+    <div class="bar-track"><div class="bar-fill good" style="width:65%"></div></div>
+    <div class="bar-val">6.40%</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Non-food Sep</div>
+    <div class="bar-track"><div class="bar-fill" style="width:94%"></div></div>
+    <div class="bar-val">9.30%</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Non-food Oct</div>
+    <div class="bar-track"><div class="bar-fill accent" style="width:100%"></div></div>
+    <div class="bar-val">9.89%</div>
+  </div>
+  <p style="font-size:11px;color:#8B8FA8;margin-top:12px;">Source: Bangladesh Bureau of Statistics, as reported. One outlet gave October food inflation as 6.80%; 6.40% appears in more outlets and is used here.</p>
+
+  <h3>Reserves: Down From August, Up on the Year</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Month-end</th><th class="num">Gross ($B)</th><th class="num">BPM6 ($B)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>June 2026</td><td class="num">37.58</td><td class="num">32.91</td></tr>
+      <tr><td>July 2026</td><td class="num">36.42</td><td class="num">31.58</td></tr>
+      <tr><td>August 2026</td><td class="num">37.35</td><td class="num">32.44</td></tr>
+      <tr><td>September 2026</td><td class="num">36.01</td><td class="num">31.20</td></tr>
+      <tr><td>October 2026</td><td class="num">36.33</td><td class="num">31.46</td></tr>
+      <tr><td>October 2025 (for comparison)</td><td class="num">32.34</td><td class="num">27.58</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px;color:#8B8FA8;">Source: Bangladesh Bank, Foreign Exchange Reserve (monthly), read directly from bb.org.bd on November 16, 2026. Bangladesh pays Asian Clearing Union settlements periodically, which lowers reserves temporarily; press reports mention an ACU payment of about $1.5 billion on September 7, which we did not verify against Bangladesh Bank.</p>
+</div>
+
+<!-- ══ 13. INSIGHT OF THE MONTH ══════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Insight of the Month</div>
+  <div class="section-title">Credit Update: The Evidence Is Pointing at Banks and the Government</div>
+  <div class="section-rule"></div>
+
+  <p>Last month we asked why record dollar inflows were not reaching the credit market, and offered four hypotheses: the cost of credit, bank risk aversion, weak borrower demand, and government borrowing. New data this month make some of them look stronger than others.</p>
+
+  <h3>What Has Changed</h3>
+
+  <p><strong>The price of money does not look like the binding constraint.</strong> The policy rate was cut by 50 basis points to 9.5% effective August 2. Private credit growth then fell, from 4.75% in August to 4.17% in September. A rate cut that is followed by weaker credit growth is not what a cost-of-credit explanation would predict, though the cut is recent and transmission can lag. (Our September issue wrongly described the rate as 10%; the hypothesis stands but the rate was already lower.)</p>
+
+  <p><strong>Banks are choosing government paper.</strong> Bangladesh Bank itself says banks are increasingly putting surplus funds into government securities rather than lending to the private sector. This is a statement of observed behaviour from the regulator, not an inference of ours.</p>
+
+  <p><strong>The government is borrowing heavily.</strong> About 43% of the Tk 1.12 lakh crore domestic bank-borrowing target was used in the first four months of the fiscal year, while the revenue shortfall widened beyond Tk 50,000 crore. The World Bank warns that heavy government borrowing from banks could tighten credit to private firms.</p>
+
+  <p><strong>Bank balance sheets are weak.</strong> The reported non-performing loan ratio of 33.2% in June, and a lending-spread cap that commentators say limits banks' ability to price risk, are both consistent with banks preferring safe government assets to uncertain private borrowers.</p>
+
+  <h3>What Remains Unresolved</h3>
+  <p>We still cannot separate bank unwillingness from borrower weakness. Gas rationing, slowing export growth and rising non-food costs all reduce borrowers' appetite for new debt. The three series that would help are Bangladesh Bank's monthly credit release for October, banks' holdings of government securities, and the pace of non-performing loan recognition.</p>
+
+  <p><strong>MAY INT's assessment:</strong> The most consistent reading of the evidence is that private credit is being squeezed from the supply side: a weak banking system and a government that needs to borrow. That implies that a further rate cut alone is unlikely to revive lending, and that progress depends on bank resolution and on closing the revenue gap. We hold this view with moderate confidence; the next monthly credit figure will test it.</p>
+</div>
+
+<!-- ══ 14. CASE STUDY ═════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Case Study</div>
+  <div class="section-title">A Cotton Importer Meets a Weaker Taka</div>
+  <div class="section-rule"></div>
+
+  <p>This is an illustrative composite, not a named client. Consider a Dhaka spinner importing raw cotton under a 90-day usance LC for US$1,000,000. The importer priced the purchase when the Bangladesh Bank reference rate was about Tk 122.74 per dollar (September 21) and did not buy forward cover. At settlement the reference rate is Tk 124.59 (November 15). We use these two reference rates for illustration only; actual bank rates for customers differ.</p>
+
+  <h3>The Arithmetic</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Item</th><th class="num">At opening rate</th><th class="num">At settlement rate</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Exchange rate (Tk per US$)</td><td class="num">122.74</td><td class="num">124.59</td></tr>
+      <tr><td>Cost of US$1,000,000 (Tk)</td><td class="num">122,740,000</td><td class="num">124,590,000</td></tr>
+      <tr><td>Additional taka cost</td><td class="num">—</td><td class="num">1,850,000 (+1.5%)</td></tr>
+    </tbody>
+  </table>
+
+  <p>Separately, cotton is 31.4% above a year ago in dollar terms (about $1.81 per kg), so the same dollar amount buys roughly 24% less cotton than a year earlier. The exchange rate cost is on top of the commodity price effect, not part of it.</p>
+
+  <h3>What the Bank and Importer Can Do</h3>
+  <p><strong>Forward cover.</strong> If the importer had bought a forward contract at opening, the taka cost would have been fixed (the forward rate would have included a premium; we do not have the market's forward rates). Whether to hedge is a business judgment, but a known dollar liability on a known date is the textbook case.</p>
+  <p><strong>Margin and facility sizing.</strong> A bank that sets its taka margin requirement and facility limit on the opening rate should ask whether a 2–3% adverse move would breach limits or push the borrower into a cash shortfall at settlement.</p>
+  <p><strong>Natural offsets.</strong> Borrowers that also export, such as vertically integrated garment groups, hold dollar receipts that offset some of the exposure. Credit files should record this so that the bank evaluates net, not gross, exposure.</p>
+  <p><strong>Pricing pass-through.</strong> Spinners that sell yarn in taka bear the full effect unless contracts allow price adjustment. Ask whether sales contracts contain exchange-rate or raw-material clauses.</p>
+
+  <p>The lesson is a modest one. A 1.5% move is not a crisis, but across a portfolio of importers with unhedged dollar liabilities it adds up, and it arrives when margins are already under pressure from cotton prices and non-food inflation.</p>
+</div>
+
+<!-- ══ 15. THOUGHT LEADERSHIP ════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Thought Leadership</div>
+  <div class="section-title">Three Reforms, One Scorecard: Reading the World Bank's List Against This Month's Data</div>
+  <div class="section-rule"></div>
+
+  <p>The World Bank's October update says Bangladesh needs urgent financial sector, energy and revenue reforms to restore growth and create jobs. It is a short list, and this month's data happen to give one reading for each.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Reform area</th><th>This month's evidence</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Financial sector</td><td>Private credit 4.17% (record low); reported NPL ratio 33.2%; banks favouring government securities</td></tr>
+      <tr><td>Energy</td><td>Gas rationing; Summit terminal outage; JKM LNG at $31.35, +182% YoY</td></tr>
+      <tr><td>Revenue</td><td>Shortfall above Tk 50,000 crore for Jul–Oct; VAT about −6%; target requires 45%+ growth</td></tr>
+    </tbody>
+  </table>
+
+  <h3>They Are Not Independent</h3>
+  <p>Each area feeds the others. A revenue gap raises government borrowing from banks, which crowds out private credit. Weak private credit limits the investment, including in captive power and more efficient energy use, that would reduce reliance on imported LNG. Energy shortages reduce output and hence the tax base. A reform sequence that treats them separately risks fixing one while the others pull it back.</p>
+
+  <h3>A View on Sequencing</h3>
+  <p>MAY INT's view, offered as opinion not finding, is that revenue and bank resolution are the two that unlock the third. Energy investment needs bank finance, and bank finance for it competes with the government for the same deposits. If the revenue gap narrowed and bank resolution progressed, credit for energy and productive investment would have room to grow. If neither moved, even a good energy plan would struggle to find funding. The deferral of LDC graduation to 2029 gives a time window, but a bounded one: the UN committee member quoted in the press said not to expect another extension.</p>
+
+  <p><strong>Where an IMF programme fits:</strong> A new programme, if agreed, would likely bundle conditions on all three areas, which is a reason the negotiation matters beyond the disbursement itself. Its absence leaves Bangladesh without an external anchor for the reform sequence. We do not forecast the timing of an agreement.</p>
+
+  <p><strong>MAY INT's assessment:</strong> The data this month are not a reason for alarm; the external accounts are sound. They are a reason to judge policy by the three domestic indicators above, because those, more than the dollar inflows, will decide whether the economy grows closer to 3.4% or to the 6.5% its central bank has targeted.</p>
+</div>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════ -->
+<div class="footer">
+  <div class="footer-logo"><span>The Trading Post</span> &mdash; MAY International Trade Services Limited</div>
+  <div class="footer-sub">Monthly Trade Intelligence &middot; Dhaka, Bangladesh &middot; Issue #11, November 2026</div>
+  <div class="footer-contact">
+    <a href="https://mayintbd.com">mayintbd.com</a> &nbsp;&middot;&nbsp;
+    <a href="mailto:info@mayinternational.com.bd">info@mayinternational.com.bd</a>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-disclaimer">
+    This newsletter is produced for informational purposes only. The data and analysis contained herein are sourced from publicly available information and MAY INT's proprietary intelligence platform. Nothing in this publication constitutes financial, legal, or compliance advice. Recipients should conduct their own due diligence before acting on any information contained herein.
+    <br><br>
+    Data sourced from: Bangladesh Bank (BDT/USD rate sheet effective November 15, 2026, and monthly reserve data, read directly from bb.org.bd on November 16, 2026), Trading Economics (commodities, November 13&ndash;16, 2026), Bangladesh Bureau of Statistics, Export Promotion Bureau, National Board of Revenue, World Bank (October 6, 2026 update), UN General Assembly, Petrobangla, Drewry (WCI), IMF PortWatch, Windward, UKMTO and United Against Nuclear Iran, as reported by BSS, The Daily Star, TBS, The Financial Express, Dhaka Tribune and other outlets. Press-reported figures were not independently verified against the original releases. Commodity, freight and energy prices are volatile; figures reflect mid-November 2026 levels. Palm oil is converted at an assumed exchange rate and is approximate.
+    <br><br>
+    &copy; 2026 MAY International Trade Services Limited. All rights reserved. To update preferences, contact <a href="mailto:info@mayinternational.com.bd" style="color:#4A4E60;">info@mayinternational.com.bd</a>
+  </div>
+</div>
+
+</div><!-- /.container -->
+</div><!-- /.wrapper -->
+</body>
+</html>
